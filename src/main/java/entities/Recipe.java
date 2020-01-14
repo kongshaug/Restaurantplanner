@@ -60,6 +60,10 @@ public class Recipe implements Serializable {
     public void addWeekMenuPlan(WeekMenuPlan wmp){
     this.weekMenuPlans.add(wmp);
     }
+    
+     public void RemoveWeekMenuPlan(WeekMenuPlan wmp){
+    this.weekMenuPlans.remove(wmp);
+    }
 
     public Long getId() {
         return id;

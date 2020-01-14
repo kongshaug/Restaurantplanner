@@ -302,8 +302,22 @@ public class RecipeFacadeTest {
       
         assertTrue(before +1 == after);
 
-        
-
     }
+    
+//      /**
+//     * Test of DeleteRecipe method, of class RecipeFacade.
+//     */
+//    @Test
+//    public void testDeleteRecipe() {
+//        System.out.println("DeleteRecipe");
+//        int before = facade.getAllRecipes().size();
+//       
+//        facade.DeleteRecipe("coldslaw");
+//        
+//        int after = facade.getAllRecipes().size();
+//      
+//        assertTrue(before -1 == after);
+//
+//    }
     
 }

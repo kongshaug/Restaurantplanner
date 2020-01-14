@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import DTO.QuoteDTO;
 import DTO.RecipeDTO;
 import DTO.IngredientDTO;
+import DTO.WeekMenuPlanDTO;
 import entities.User;
 import errorhandling.NotFoundException;
 import facades.DataFacade;
@@ -126,6 +127,19 @@ public class LoginResource {
        
         RF.addWeekPlan(name);
         return "{\"msg\": \"ugeplanen blev gemt\"}";
+      
+    }
+    
+    @GET
+  
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("allWeekDayPlans")
+   // @RolesAllowed("admin")
+    public Set<WeekMenuPlanDTO> allWeekplan() {
+        
+       
+        return RF.getAllWeekeMenuPlans();
+      
       
     }
 

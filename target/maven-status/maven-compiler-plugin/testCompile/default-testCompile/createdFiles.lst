@@ -1,5 +1,6 @@
-facades\UserFacadeTest.class
 facades\DataFacadeTest.class
 rest\QuoteResourceTest.class
+facades\RecipeFacadeTest.class
 rest\LoginEndpointTest.class
 utils\SettingsTest.class
+facades\UserFacadeTest.class

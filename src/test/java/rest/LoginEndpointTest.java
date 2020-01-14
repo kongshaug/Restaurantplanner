@@ -270,6 +270,21 @@ public class LoginEndpointTest {
          
      
     }
+    
   
-  
+    @Test
+    public void testGetAllWmp() {
+        System.out.println("testGetAllWmp");
+        
+        login("user_admin", "test") ;
+         given()
+            .contentType("application/json")
+            .header("x-access-token", securityToken)
+            .when()
+            .get("/info/storecheck/allWeekDayPlans").then()
+            .statusCode(200);
+           
+         
+     
+    }
 }

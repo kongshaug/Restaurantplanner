@@ -3,6 +3,7 @@ entities\Ingredient_.class
 security\JWTSecurityContext.class
 entities\Item.class
 security\SharedSecret.class
+DTO\IngredientDTO.class
 utils\EMF_Creator$Strategy$1.class
 errorhandling\AuthenticationException.class
 facades\DataFacade.class
@@ -28,7 +29,9 @@ entities\User_.class
 utils\EMF_Creator$DbSelector$1.class
 security\JWTAuthenticationFilter.class
 utils\Settings.class
+DTO\RecipeDTO.class
 cors\CorsRequestFilter.class
+DTO\WeekMenuPlanDTO.class
 entities\WeekMenuPlan.class
 cors\CorsResponseFilter.class
 rest\QuoteResource.class

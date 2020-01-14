@@ -158,6 +158,44 @@ public class RecipeFacade {
 
     }
     
+//     public String DeleteRecipe(String name) {
+//        EntityManager em = emf.createEntityManager();
+//        Recipe recipe;
+//
+//        try {
+//            
+//            
+//            TypedQuery<Recipe> query = em.createQuery("SELECT r FROM Recipe r WHERE r.name = :name", Recipe.class);
+//            recipe = query.setParameter("name", name).getResultList().get(0);
+//             em.getTransaction().begin();
+//            recipe = em.find(Recipe.class, recipe.getId());
+//            for (WeekMenuPlan wmp :  recipe.getWeekMenuPlans()) {
+//                wmp.removeRecipe(recipe);
+//                em.merge(wmp);
+//                em.getTransaction().commit();
+//            }
+//            Set<Ingredient> ingredients = new HashSet();
+//            recipe.setIngredients(ingredients);
+//             em.merge(recipe);
+//              em.getTransaction().commit();
+//             
+//            em.remove(recipe);
+//            em.getTransaction().commit();
+//        } catch (Exception e) {
+//            return "{\"msg\":\"no recipe with given name\"}";
+//        } finally {
+//            em.close();
+//        }
+//
+//        for (Ingredient ingredient : recipe.getIngredients()) {
+//            if (ingredient.getAmount() > ingredient.getItem().getStorageAmount()) {
+//                return "{\"msg\":\"" + ingredient.getItem().getName() + "\"}";
+//            }
+//        }
+//
+//        return "{\"msg\":\"true\"}";
+//    }
+    
 
     public String populate() {
         EntityManager em = emf.createEntityManager();

@@ -29,6 +29,30 @@ public class WeekMenuPlanDTO {
             recipes.add(new RecipeDTO(recipe));
         }
     }
+
+    public Set<RecipeDTO> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(Set<RecipeDTO> recipes) {
+        this.recipes = recipes;
+    }
+
+    public int getWeek() {
+        return week;
+    }
+
+    public void setWeek(int week) {
+        this.week = week;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
     
     
     

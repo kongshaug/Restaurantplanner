@@ -50,6 +50,11 @@ public class WeekMenuPlan implements Serializable {
             recipe.addWeekMenuPlan(this);
         
     }
+       public void removeRecipe(Recipe recipe){
+             this.recipes.remove(recipe);
+            recipe.RemoveWeekMenuPlan(this);
+        
+    }
     
     public Long getId() {
         return id;
