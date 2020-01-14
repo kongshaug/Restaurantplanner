@@ -233,7 +233,7 @@ public class RecipeFacadeTest {
         System.out.println("isInStorage");
         String result = facade.isInStorage(r1.getName());
       
-        assertEquals("true", result);
+        assertEquals("{\"msg\":\"true\"}", result);
 
     }
 }
