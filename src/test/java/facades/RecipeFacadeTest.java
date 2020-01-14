@@ -228,15 +228,12 @@ public class RecipeFacadeTest {
     /**
      * Test of isInStorage method, of class RecipeFacade.
      */
-//    @Test
-//    public void testIsInStorage() {
-//        System.out.println("isInStorage");
-//        Recipe recipe = null;
-//        RecipeFacade instance = new RecipeFacade();
-//        Ingredient expResult = null;
-//        Ingredient result = instance.isInStorage(recipe);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testIsInStorage() {
+        System.out.println("isInStorage");
+        String result = facade.isInStorage(r1.getName());
+      
+        assertEquals("true", result);
+
+    }
 }

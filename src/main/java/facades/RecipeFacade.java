@@ -5,6 +5,7 @@
  */
 package facades;
 
+import DTO.IngredientDTO;
 import DTO.RecipeDTO;
 import entities.Recipe;
 import entities.Ingredient;
@@ -59,8 +60,27 @@ public class RecipeFacade {
 
     }
 
-    public Ingredient isInStorage(Recipe recipe) {
-        return null;
+    public String isInStorage(String name) {
+         EntityManager em = emf.createEntityManager();
+        Recipe recipe;
+        
+          try {
+            TypedQuery<Recipe> query = em.createQuery("SELECT r FROM Recipe r WHERE r.name = :name", Recipe.class);
+            recipe = query.setParameter("name", name).getResultList().get(0);
+            //make catch if user == null
+        } finally {
+            em.close();
+        }
+          
+          for (Ingredient ingredient :  recipe.getIngredients()) {
+            if(ingredient.getAmount()> ingredient.getItem().getStorageAmount())
+            {
+                return ingredient.getItem().getName();
+            }
+        }
+          
+          
+        return "true";
     }
 
     public String populate() {

@@ -17,12 +17,14 @@ import java.util.Set;
 public class RecipeDTO {
     
     private Set<IngredientDTO> ingredients = new HashSet();
+    private String name;
     private int preparationTime;
     private String directions;
 
     public RecipeDTO(Recipe recipe) {
         this.preparationTime = recipe.getPreparationTime();
         this.directions = recipe.getDirections();
+        this.name = recipe.getName();
         for (Ingredient ingredient : recipe.getIngredients()) {
             ingredients.add(new IngredientDTO(ingredient));
         }
@@ -31,6 +33,16 @@ public class RecipeDTO {
     public Set<IngredientDTO> getIngredients() {
         return ingredients;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
 
     public void setIngredients(Set<IngredientDTO> ingredients) {
         this.ingredients = ingredients;
