@@ -1,5 +1,6 @@
 package rest;
 
+import DTO.RecipeDTO;
 import entities.User;
 import entities.Role;
 
@@ -8,6 +9,7 @@ import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import java.net.URI;
+import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.UriBuilder;
@@ -15,7 +17,10 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
 import org.junit.jupiter.api.AfterAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -227,4 +232,27 @@ public class LoginEndpointTest {
   }
     
     
+     /**
+     * Test of allRecipes method, of class LoginResource.
+     */
+    @Test
+    public void testAllRecipes() {
+        System.out.println("allRecipes");
+        
+        login("user_admin", "test") ;
+         given()
+            .contentType("application/json")
+            .header("x-access-token", securityToken)
+            .when()
+            .get("/info/allRecipes").then()
+            .statusCode(200)
+            .body("preparationTime", hasItems(3,1), "directions", hasItems("skrald gulerødderne, riv dem og bland dem i kagedejen"));
+         
+     
+    }
+
+  
+  
+  
+  
 }

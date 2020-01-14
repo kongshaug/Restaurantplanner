@@ -14,6 +14,8 @@ import entities.Ingredient;
 public class IngredientDTO {
     
     private int amount;
+
+    
     private String itemName;
     private Long itemId;
 
@@ -22,6 +24,16 @@ public class IngredientDTO {
         this.itemName = ingredient.getItem().getName();
         this.itemId = ingredient.getItem().getId();
     }
-    
+    public int getAmount() {
+        return amount;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public Long getItemId() {
+        return itemId;
+    }
     
 }
