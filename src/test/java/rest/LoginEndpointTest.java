@@ -252,7 +252,24 @@ public class LoginEndpointTest {
     }
 
   
-  
+      /**
+     * Test of isAllIngredienceInStore method, of class LoginResource.
+     */
+    @Test
+    public void testIsAllIngredienceInStore() {
+        System.out.println("isAllIngredienceInStore");
+        
+        login("user_admin", "test") ;
+         given()
+            .contentType("application/json")
+            .header("x-access-token", securityToken)
+            .when()
+            .get("/info/storecheck/gulerodskage").then()
+            .statusCode(200)
+            .body("msg", equalTo("true"));
+         
+     
+    }
   
   
 }

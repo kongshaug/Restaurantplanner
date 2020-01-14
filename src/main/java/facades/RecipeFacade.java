@@ -67,20 +67,25 @@ public class RecipeFacade {
           try {
             TypedQuery<Recipe> query = em.createQuery("SELECT r FROM Recipe r WHERE r.name = :name", Recipe.class);
             recipe = query.setParameter("name", name).getResultList().get(0);
-            //make catch if user == null
-        } finally {
+           
+        }
+          catch( Exception e){
+           return "{\"msg\":\"no recipe with given name\"}";
+          }
+          
+          finally {
             em.close();
         }
-          
+         
           for (Ingredient ingredient :  recipe.getIngredients()) {
             if(ingredient.getAmount()> ingredient.getItem().getStorageAmount())
             {
-                return ingredient.getItem().getName();
+                return "{\"msg\":\""+ ingredient.getItem().getName()+"\"}";
             }
         }
           
           
-        return "true";
+        return "{\"msg\":\"true\"}";
     }
 
     public String populate() {

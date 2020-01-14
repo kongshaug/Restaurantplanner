@@ -21,6 +21,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import utils.EMF_Creator;
@@ -80,20 +81,26 @@ public class LoginResource {
         return "{\"msg\": \"Hello to (admin) User: " + thisuser + "\"}";
     }
     
-     //Just to verify if the database is setup
+     //gets all recipes
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("allRecipes")
     @RolesAllowed("user")
     public Set<RecipeDTO> allRecipes() {
 
-        EntityManager em = EMF.createEntityManager();
-        try {
             Set<RecipeDTO> recipes = RF.getAllRecipes();
             return recipes;
-        } finally {
-            em.close();
-        }
+    }
+    
+    
+      @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("storecheck/{name}")
+    @RolesAllowed("user")
+    public String isAllIngredienceInStore(@PathParam("name") String name) {
+
+            return RF.isInStorage(name);
+  
     }
     
      @GET
@@ -101,12 +108,7 @@ public class LoginResource {
     @Path("populate")
     public String populate() {
 
-        EntityManager em = EMF.createEntityManager();
-        try {
-           
             return RF.populate();
-        } finally {
-            em.close();
-        }
+
     }
 }
