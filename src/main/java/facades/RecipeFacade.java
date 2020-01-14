@@ -5,9 +5,11 @@
  */
 package facades;
 
+import DTO.RecipeDTO;
 import entities.Recipe;
 import entities.Ingredient;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.EntityManager;
@@ -36,10 +38,11 @@ public class RecipeFacade {
         return instance;
     }
 
-    public List<Recipe> getAllRecipes() {
+    public Set<RecipeDTO> getAllRecipes() {
 
         EntityManager em = emf.createEntityManager();
         List<Recipe> recipes;
+        Set<RecipeDTO> recipesDTO = new HashSet();
         try {
             TypedQuery<Recipe> query = em.createQuery("SELECT r FROM Recipe r", Recipe.class);
             recipes = query.getResultList();
@@ -47,7 +50,10 @@ public class RecipeFacade {
         } finally {
             em.close();
         }
-        return recipes;
+        for (Recipe recipe :  recipes) {
+            recipesDTO.add(new RecipeDTO(recipe));
+        }
+        return recipesDTO;
 
     }
 
