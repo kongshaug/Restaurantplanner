@@ -10,7 +10,9 @@ import entities.Item;
 import entities.Recipe;
 import entities.WeekMenuPlan;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -236,4 +238,31 @@ public class RecipeFacadeTest {
         assertEquals("{\"msg\":\"true\"}", result);
 
     }
+    
+    
+     /**
+     * Test of addRecipe method, of class RecipeFacade.
+     */
+    @Test
+    public void testAddRecipe() {
+        System.out.println("addRecipe");
+        int before = facade.getAllRecipes().size();
+        
+        
+        Map<String, Integer> testIngredience = new HashMap<String, Integer>();
+        testIngredience.put("mørkchokolade", 400);
+        testIngredience.put("hvedemel", 100);
+         testIngredience.put("smør", 700);
+          testIngredience.put("vaniljepulver", 600);
+
+        facade.addRecipe("TestRecipe", "test description", 3, testIngredience);
+        
+         int after = facade.getAllRecipes().size();
+      
+        assertTrue(before +1 == after);
+
+        
+
+    }
+    
 }
