@@ -11,15 +11,18 @@ import facades.DataFacade;
 import static facades.DataFacade.getDataFacade;
 import facades.RecipeFacade;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
@@ -93,15 +96,56 @@ public class LoginResource {
     }
     
     
-      @GET
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("storecheck/{name}")
     @RolesAllowed("user")
     public String isAllIngredienceInStore(@PathParam("name") String name) {
 
             return RF.isInStorage(name);
-  
     }
+    
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("addRecipe")
+//  //  @RolesAllowed("user")
+//    public void addRecipe(String name) {
+//        
+//      
+//    }
+//    
+    
+       @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("addWeekplan")
+    @RolesAllowed("user")
+    public String addWeekplan(String[] name) {
+        
+       
+        RF.addWeekPlan(name);
+        return "{\"msg\": \"ugeplanen blev gemt\"}";
+      
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
      @GET
     @Produces(MediaType.APPLICATION_JSON)

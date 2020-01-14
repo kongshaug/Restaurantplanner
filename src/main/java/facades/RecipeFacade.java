@@ -7,6 +7,7 @@ package facades;
 
 import DTO.IngredientDTO;
 import DTO.RecipeDTO;
+import DTO.WeekMenuPlanDTO;
 import entities.Recipe;
 import entities.Ingredient;
 import entities.Item;
@@ -42,6 +43,25 @@ public class RecipeFacade {
         return instance;
     }
 
+      public Set<WeekMenuPlanDTO> getAllWeekeMenuPlans() {
+
+        EntityManager em = emf.createEntityManager();
+        List<WeekMenuPlan> WMPs;
+        Set<WeekMenuPlanDTO> WMPDTO = new HashSet();
+        try {
+            TypedQuery<WeekMenuPlan> query = em.createQuery("SELECT w FROM WeekMenuPlan w", WeekMenuPlan.class);
+            WMPs = query.getResultList();
+            //make catch if Recipe == null
+        } finally {
+            em.close();
+        }
+        for (WeekMenuPlan WeekMenuPlan : WMPs) {
+            WMPDTO.add(new WeekMenuPlanDTO(WeekMenuPlan));
+        }
+        return WMPDTO;
+
+    }
+      
     public Set<RecipeDTO> getAllRecipes() {
 
         EntityManager em = emf.createEntityManager();
@@ -94,7 +114,7 @@ public class RecipeFacade {
             em.getTransaction().begin();
 
             for (Map.Entry<String, Integer> entry : ingredience.entrySet()) {
-                System.out.println(entry.getKey() + "/" + entry.getValue());
+
 
                 TypedQuery<Item> query = em.createQuery("SELECT i FROM Item i WHERE i.name = :name", Item.class);
                 item = query.setParameter("name", entry.getKey()).getResultList().get(0);
@@ -111,6 +131,33 @@ public class RecipeFacade {
         }
 
     }
+    
+    public void addWeekPlan(String[] recipes) {
+        EntityManager em = emf.createEntityManager();
+        int weekNo = Integer.parseInt(recipes[recipes.length-2]);
+        int year = Integer.parseInt(recipes[recipes.length-1]);
+        WeekMenuPlan wmp = new WeekMenuPlan(weekNo,year);
+        try {
+            em.getTransaction().begin();
+
+            for (int i = 0 ; i+2< recipes.length ; i++){
+                 
+                
+                Recipe recipe;
+                
+                TypedQuery<Recipe> query = em.createQuery("SELECT r FROM Recipe r WHERE r.name = :name", Recipe.class);
+                recipe = query.setParameter("name", recipes[i]).getResultList().get(0);
+                wmp.addRecipe(recipe);
+                    
+        }
+            em.persist(wmp);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+
+    }
+    
 
     public String populate() {
         EntityManager em = emf.createEntityManager();

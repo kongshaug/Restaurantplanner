@@ -172,7 +172,7 @@ public class RecipeFacadeTest {
         r7.addIngredient(i13);
         r7.addIngredient(i12);
 
-        w1 = new WeekMenuPlan(2020, 1);
+        w1 = new WeekMenuPlan(1, 2020);
         w1.addRecipe(r1);
         w1.addRecipe(r2);
         w1.addRecipe(r3);
@@ -214,6 +214,27 @@ public class RecipeFacadeTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
+    
+    
+        /**
+     * Test of GetAllWeekMenuPlans method, of class RecipeFacade.
+     */
+    @Test
+    public void testGetAllWeekMenuPlans() {
+        System.out.println("GetAllWeekMenuPlans");
+       
+        
+       
+       
+        int result = facade.getAllWeekeMenuPlans().size();
+        
+        
+      
+        assertTrue(result == 1);
+
+        
+
+    }
     /**
      * Test of getAllRecipes method, of class RecipeFacade.
      */
@@ -258,6 +279,26 @@ public class RecipeFacadeTest {
         facade.addRecipe("TestRecipe", "test description", 3, testIngredience);
         
          int after = facade.getAllRecipes().size();
+      
+        assertTrue(before +1 == after);
+
+        
+
+    }
+    
+     /**
+     * Test of AddWeekMenuPlan method, of class RecipeFacade.
+     */
+    @Test
+    public void testAddWeekMenuPlan() {
+        System.out.println("AddWeekMenuPlan");
+        int before = facade.getAllWeekeMenuPlans().size();
+        
+        String[] recipes = {"chokolade bananer","banan brød","flødecreme","ingefærdskage","gulerodskage","coldslaw", "chocolade kage", "23","2021"};
+       
+        facade.addWeekPlan(recipes);
+        
+         int after = facade.getAllWeekeMenuPlans().size();
       
         assertTrue(before +1 == after);
 
