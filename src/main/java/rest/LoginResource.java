@@ -2,19 +2,17 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import DTO.QuoteDTO;
+
 import DTO.RecipeDTO;
-import DTO.IngredientDTO;
+
 import DTO.WeekMenuPlanDTO;
 import entities.User;
-import errorhandling.NotFoundException;
-import facades.DataFacade;
-import static facades.DataFacade.getDataFacade;
+
 import facades.RecipeFacade;
 import java.util.List;
-import java.util.Map;
+
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
+
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -143,23 +141,6 @@ public class LoginResource {
       
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
      @GET
     @Produces(MediaType.APPLICATION_JSON)

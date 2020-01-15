@@ -6,7 +6,6 @@ security\SharedSecret.class
 DTO\IngredientDTO.class
 utils\EMF_Creator$Strategy$1.class
 errorhandling\AuthenticationException.class
-facades\DataFacade.class
 utils\EMF_Creator$DbSelector.class
 rest\ApplicationConfig.class
 utils\EMF_Creator$1.class
@@ -17,7 +16,6 @@ security\UserPrincipal.class
 utils\EMF_Creator$Strategy$3.class
 facades\UserFacade.class
 utils\SetupTestUsers.class
-DTO\QuoteDTO.class
 errorhandling\GenericExceptionMapper.class
 entities\Recipe_.class
 security\LoginEndpoint.class
@@ -34,7 +32,6 @@ cors\CorsRequestFilter.class
 DTO\WeekMenuPlanDTO.class
 entities\WeekMenuPlan.class
 cors\CorsResponseFilter.class
-rest\QuoteResource.class
 entities\Ingredient.class
 security\RolesAllowedFilter.class
 errorhandling\NotFoundException.class
