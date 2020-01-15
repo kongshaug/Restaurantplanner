@@ -134,7 +134,7 @@ public class LoginResource {
   
     @Produces(MediaType.APPLICATION_JSON)
     @Path("allWeekDayPlans")
-   // @RolesAllowed("admin")
+    @RolesAllowed("admin")
     public Set<WeekMenuPlanDTO> allWeekplan() {
         
        
